@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./save_img:/app/save_img
+    command: python3 train.py
+    depends_on:
+      - db
+    restart: unless-stopped
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
