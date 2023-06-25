@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ImprovedGan-pytorch"
+version = "1"
+description = ""
+authors = ["Lucas Gomes <lggomes007@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ImprovedGan-pytorch"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+imageio = "^2.31.1"
+matplotlib = "^3.7.1"
+numpy = "^1.25.0"
+pillow = "^9.5.0"
+six = "^1.16.0"
+tensorboardx = "^2.6.1"
+torch = "^2.0.1"
+torchvision = "^0.15.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
