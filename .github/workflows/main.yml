@@ -24,8 +24,8 @@ jobs:
         
       - name: Install dependencies
         run: |
-          apt-get upgrade && apt-get update
-          apt-get install python3-sphinx
+          sudo apt-get upgrade && apt-get update
+          sudo apt-get install python3-sphinx
           python -m pip install --upgrade pip
           pip install sphinx_rtd_theme
           pip install imageio
