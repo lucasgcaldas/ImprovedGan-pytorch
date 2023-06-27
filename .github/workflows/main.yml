@@ -1,0 +1,38 @@
+name: Build-sphinx-docs
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+           python-version: "3.10"
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+      - name: Install dependencies
+        run: |
+          apt-get upgrade && apt-get update
+          apt-get install python3-sphinx
+          python -m pip install --upgrade pip
+          pip install sphinx_rtd_theme
+          pip install imageio
+      - name: Build HTML
+        run: |
+          cd docs/
+          make html
+      - name: Run ghp-import
+        run: |
+          ghp-import -n -p -f docs/_build/html
