@@ -32,6 +32,7 @@ jobs:
           pip install sphinx_rtd_theme
           pip install imageio
           pip install flake8 pytest pytest-cov
+          poetry install
 
       - name: Lint with flake8
         run: |
@@ -51,3 +52,10 @@ jobs:
       - name: Run ghp-import
         run: |
           ghp-import -n -p -f docs/_build/html
+
+      - name: Publish package
+      env:
+        PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+      run: |
+        poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
+        poetry publish --build
