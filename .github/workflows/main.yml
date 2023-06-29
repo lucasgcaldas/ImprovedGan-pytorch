@@ -58,5 +58,6 @@ jobs:
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
-          poetry config pypi-token.pypi $PYPI_TOKEN
+          echo "[pypi]" > ~/.config/pypoetry/auth.toml
+          echo "token = '$PYPI_TOKEN'" >> ~/.config/pypoetry/auth.toml
           poetry publish --build
