@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "ImprovedGan-pytorch"
-version = "1"
+version = "0.1.0"
 description = ""
 authors = ["Lucas Gomes <lggomes007@gmail.com>"]
 readme = "README.md"
-packages = [{include = "ImprovedGan-pytorch"}]
+packages = [{include = "improvedgan"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
